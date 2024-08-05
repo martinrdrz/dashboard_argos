@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Dashboard, Home, Product, Settings } from '../pages';
+import { Dashboard, Home, Product, Settings } from '../../pages';
 
 export const DashboardArea = () => {
     return (
@@ -16,12 +16,12 @@ export const DashboardArea = () => {
                 lacus sed viverra tellus.
             </Typography>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/products" element={<Product />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/*" element={<Navigate to="/" />} />
+                <Route path='/' element={<Home />} />
+                <Route path='/home' element={<Home />} />
+                <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/products' element={<Product />} />
+                <Route path='/settings' element={<Settings />} />
+                <Route path='/*' element={<Navigate to='/' />} />
             </Routes>
         </>
     );

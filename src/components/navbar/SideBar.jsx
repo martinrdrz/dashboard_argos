@@ -16,10 +16,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { Navigate, NavLink, Route, Routes } from 'react-router-dom';
-import { Dashboard, Home, Product, Settings } from '../pages';
+import { NavLink } from 'react-router-dom';
 import { DashboardArea } from './DashboardArea';
 
 const drawerWidth = 240;
@@ -101,14 +98,13 @@ export const SideBar = ({ navArrayLinks }) => {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <AppBar position="fixed" open={open}>
+            <AppBar position='fixed' open={open}>
                 <Toolbar>
                     <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
+                        color='inherit'
+                        aria-label='open drawer'
                         onClick={handleDrawerOpen}
-                        edge="start"
+                        edge='start'
                         sx={{
                             marginRight: 5,
                             ...(open && { display: 'none' }),
@@ -116,12 +112,12 @@ export const SideBar = ({ navArrayLinks }) => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
+                    <Typography variant='h6' noWrap component='div'>
                         ARGOS Dashboard
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Drawer variant="permanent" open={open}>
+            <Drawer variant='permanent' open={open}>
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -155,27 +151,9 @@ export const SideBar = ({ navArrayLinks }) => {
                     ))}
                 </List>
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
                 <DashboardArea />
-                {/*<Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at
-                    ultrices mi tempus imperdiet.
-                </Typography>
-                <Typography paragraph>
-                    Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla facilisi
-                    etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac tincidunt. Ornare
-                    suspendisse sed nisi lacus sed viverra tellus.
-                </Typography>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/products" element={<Product />} />
-                    <Route path="/settings" element={<Settings />} />
-                    <Route path="/*" element={<Navigate to="/" />} />
-                </Routes> */}
             </Box>
         </Box>
     );

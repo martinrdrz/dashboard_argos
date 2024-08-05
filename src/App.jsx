@@ -1,10 +1,9 @@
-import { SideBar } from './components/SideBar';
+import { SideBar } from './components/navbar/SideBar';
 import MenuIcon from '@mui/icons-material/Menu';
 import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Home, Dashboard, Product, Settings } from './pages';
 
 const navArrayLinks = [
     {
