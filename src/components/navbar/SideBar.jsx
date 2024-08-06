@@ -5,7 +5,6 @@ import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -98,13 +97,13 @@ export const SideBar = ({ navArrayLinks }) => {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <AppBar position='fixed' open={open}>
+            <AppBar position="fixed" open={open}>
                 <Toolbar>
                     <IconButton
-                        color='inherit'
-                        aria-label='open drawer'
+                        color="inherit"
+                        aria-label="open drawer"
                         onClick={handleDrawerOpen}
-                        edge='start'
+                        edge="start"
                         sx={{
                             marginRight: 5,
                             ...(open && { display: 'none' }),
@@ -112,12 +111,12 @@ export const SideBar = ({ navArrayLinks }) => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant='h6' noWrap component='div'>
-                        ARGOS Dashboard
+                    <Typography variant="h5" noWrap component="div">
+                        C4 Dashboard
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Drawer variant='permanent' open={open}>
+            <Drawer variant="permanent" open={open}>
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -151,7 +150,7 @@ export const SideBar = ({ navArrayLinks }) => {
                     ))}
                 </List>
             </Drawer>
-            <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
+            <Box component="main" sx={{ flexGrow: 1, ml: 4, mt: 3 }}>
                 <DrawerHeader />
                 <DashboardArea />
             </Box>
