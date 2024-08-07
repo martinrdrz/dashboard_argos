@@ -10,14 +10,12 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { useSnackbar } from 'notistack';
 
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
         </Typography>
@@ -25,6 +23,8 @@ function Copyright(props) {
 }
 
 export const LoginPage = () => {
+    const { enqueueSnackbar } = useSnackbar();
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -34,12 +34,8 @@ export const LoginPage = () => {
         });
     };
 
-    const handleForgotPassword = () => {
-        console.log('Olvido contraseña');
-    };
-
-    const handleHaveAccount = () => {
-        console.log('No tiene cuenta');
+    const handleMensaje = (mensaje) => {
+        enqueueSnackbar(mensaje, { variant: 'success' });
     };
 
     return (
@@ -86,7 +82,7 @@ export const LoginPage = () => {
                     <Grid container>
                         <Grid item xs>
                             <Button
-                                onClick={handleForgotPassword}
+                                onClick={() => handleMensaje('Conacte al administrador')}
                                 variant="text"
                                 sx={{ textTransform: 'none', padding: 0, color: 'primary.main' }}
                             >
@@ -95,7 +91,7 @@ export const LoginPage = () => {
                         </Grid>
                         <Grid item>
                             <Button
-                                onClick={handleHaveAccount}
+                                onClick={() => handleMensaje('Contacte al administrador')}
                                 variant="text"
                                 sx={{ textTransform: 'none', padding: 0, color: 'primary.main' }}
                             >

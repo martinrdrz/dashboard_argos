@@ -17,6 +17,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { NavLink } from 'react-router-dom';
 import { DashboardArea } from './DashboardArea';
+import { Button } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
@@ -95,6 +97,9 @@ export const SideBar = ({ navArrayLinks }) => {
         setOpen(false);
     };
 
+    const handleLogout = () => {
+        console.log('Logout');
+    };
     return (
         <Box sx={{ display: 'flex' }}>
             <AppBar position="fixed" open={open}>
@@ -114,6 +119,23 @@ export const SideBar = ({ navArrayLinks }) => {
                     <Typography variant="h5" noWrap component="div">
                         C4 Dashboard
                     </Typography>
+                    <Box sx={{ flexGrow: 1 }} />
+                    <Button
+                        variant="outlined"
+                        sx={{
+                            borderColor: theme.palette.secondary.contrastText,
+                            color: theme.palette.secondary.contrastText,
+                            '&:hover': {
+                                borderColor: theme.palette.secondary.contrastText,
+                                backgroundColor: theme.palette.secondary.light,
+                            },
+                            fontSize: '0.75rem',
+                        }}
+                        onClick={handleLogout}
+                        startIcon={<LogoutIcon />}
+                    >
+                        Salir
+                    </Button>
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>
@@ -126,26 +148,48 @@ export const SideBar = ({ navArrayLinks }) => {
                 <List>
                     {navArrayLinks.map((item, index) => (
                         <ListItem key={item.title} disablePadding sx={{ display: 'block' }}>
-                            <ListItemButton
-                                component={NavLink}
-                                to={item.path}
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
+                            {item.title === 'Salir' ? (
+                                <ListItemButton
+                                    onClick={handleLogout}
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
                                 >
-                                    {item.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={item.title} sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        {item.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={item.title} sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            ) : (
+                                <ListItemButton
+                                    component={NavLink}
+                                    to={item.path}
+                                    sx={{
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
+                                    }}
+                                >
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        {item.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={item.title} sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            )}
                         </ListItem>
                     ))}
                 </List>

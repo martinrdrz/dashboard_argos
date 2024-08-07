@@ -2,6 +2,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { SideBar } from '../components/navbar/SideBar';
 
 const navArrayLinks = [
@@ -24,6 +25,11 @@ const navArrayLinks = [
         title: 'Settings',
         path: '/settings',
         icon: <MenuIcon />,
+    },
+    {
+        title: 'Salir',
+        path: '/salir',
+        icon: <LogoutIcon />,
     },
 ];
 

@@ -1,6 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { C4DashboardPage } from './pages';
 import { LoginPage } from './pages';
+//import { Provider } from 'react-redux';
+//import { store } from './store/store';
 
 export const App = () => {
     const status = 'not-authenticated'; //not-authenticated,  authenticated
