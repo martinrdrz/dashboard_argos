@@ -4,7 +4,7 @@ import { checking, clearErrorMesage, onLogin, onLogout } from '../store';
 
 export const useAuthStore = () => {
     //const { status, uid, name, email, photoURL, errorMessage } = useSelector((state) => state.auth);
-    const { errorMessage } = useSelector((state) => state.auth);
+    const { status, errorMessage } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
     const startLogin = async ({ email, password }) => {
@@ -21,7 +21,7 @@ export const useAuthStore = () => {
                 onLogin({
                     uid: data.uid,
                     name: data.name,
-                    email: email,
+                    email: data.email,
                     photoURL: data.photoURL ?? null, //devuelve data.photoURL si el mismo existe, caso contrario devuelve null
                 })
             );
@@ -39,24 +39,24 @@ export const useAuthStore = () => {
         dispatch(onLogout());
     };
 
-    // const checkAuthToken = async () => {
-    //     const token = localStorage.getItem('token');
-    //     if (!token) return dispatch(onLogout());
-    //     try {
-    //         const { data } = await calendarApi.get('/auth/renew');
-    //         localStorage.setItem('token', data.token);
-    //         localStorage.setItem('token-init-date', new Date().getTime());
-    //         dispatch(onLogin({ name: data.name, uid: data.uid }));
-    //     } catch (error) {
-    //         localStorage.clear();
-    //         dispatch(onLogout());
-    //     }
-    // };
+    const checkAuthToken = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) return dispatch(onLogout());
+        try {
+            const { data } = await authApi.get('/auth/renew');
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('token-init-date', new Date().getTime());
+            dispatch(onLogin({ uid: data.uid, name: data.name, email: data.email }));
+        } catch (error) {
+            localStorage.clear();
+            dispatch(onLogout());
+        }
+    };
 
     return {
         //Propiedades
+        status,
         errorMessage,
-        //status,
         //uid,
         //name,
         //email,
@@ -65,7 +65,7 @@ export const useAuthStore = () => {
         //Metodos
         startLogin,
         //startRegister,
-        //checkAuthToken,
+        checkAuthToken,
         startLogout,
     };
 };

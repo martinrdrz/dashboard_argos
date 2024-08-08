@@ -10,6 +10,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     // }
 
     useEffect(() => {
+        console.log('evaluando Validators');
         createValidators();
     }, [formState]);
 
@@ -22,7 +23,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
             if (formValidation[formValue] !== null) return false;
         }
         return true;
-    }, [formState]);
+    }, [formValidation]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
