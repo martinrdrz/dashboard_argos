@@ -3,7 +3,8 @@ import { authApi } from '../api/authApi';
 import { checking, clearErrorMesage, onLogin, onLogout } from '../store';
 
 export const useAuthStore = () => {
-    const { status, user, errorMessage } = useSelector((state) => state.auth);
+    //const { status, uid, name, email, photoURL, errorMessage } = useSelector((state) => state.auth);
+    const { errorMessage } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
     const startLogin = async ({ email, password }) => {
@@ -55,13 +56,16 @@ export const useAuthStore = () => {
     return {
         //Propiedades
         errorMessage,
-        status,
-        user,
+        //status,
+        //uid,
+        //name,
+        //email,
+        //photoURL,
 
         //Metodos
         startLogin,
-        startRegister,
-        checkAuthToken,
+        //startRegister,
+        //checkAuthToken,
         startLogout,
     };
 };
