@@ -1,9 +1,14 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { ResponsiveGrid } from '../components/dashboard/ResponsiveGrid';
-import { TextCard } from '../components/dashboard/TextCard';
-import { ColorCard } from '../components/dashboard/ColorCard';
+import {
+    TextCard,
+    ColorCard,
+    DetalleCardBlue,
+    DetalleCardRed,
+    ResponsiveGridLayout,
+    ResponsiveFlexLayout,
+} from '../components/dashboard';
 
 export const DashboardPage = () => {
     return (
@@ -13,11 +18,15 @@ export const DashboardPage = () => {
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 {/* <ResponsiveGrid /> */}
+                <ResponsiveGridLayout />
+                {/* <ResponsiveFlexLayout />
                 <ColorCard colorFondo="Pink" />
                 <ColorCard colorFondo="PaleGreen" />
                 <ColorCard colorFondo="PaleTurquoise" />
+                <DetalleCardBlue />
+                <DetalleCardRed />
                 <TextCard />
-                <TextCard />
+                <TextCard /> */}
             </Box>
         </>
     );

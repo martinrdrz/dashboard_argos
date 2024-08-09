@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { RectangularComponent } from '../RectangularComponent';
+import { RectangularComponent } from './RectangularComponent';
 
 export const ResponsiveGrid = () => {
     return (
