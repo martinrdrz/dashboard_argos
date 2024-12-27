@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { authApi } from '../api/authApi';
-import { checking, clearErrorMesage, onLogin, onLogout } from '../store';
+import { checking, onLogin, onLogout } from '../store';
 
 export const useAuthStore = () => {
     //const { status, uid, name, email, photoURL, errorMessage } = useSelector((state) => state.auth);
